@@ -18,11 +18,18 @@
 
 .content {
     margin-bottom: 10vh;
-    background: linear-gradient(180deg, var(--orange), var(--primary-light) 150%);
-    border-radius: 0.5rem;
+    background-color: var(--glass);
+    border-radius: 5rem;
     padding: 5rem 2rem;
     width: 30em;
     font-size: 2rem;
     line-height: normal;
     text-align: center;
+}
+
+.sub-content {
+    background: linear-gradient(180deg, var(--primary), var(--secondary-dark) 150%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }

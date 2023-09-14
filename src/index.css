@@ -2,6 +2,7 @@
 
 
 :root {
+  --glass: rgba(255,247,230,0.2);
   --primary: #213e53;
   --primary-dark: #192f3e;
   --primary-light: #e9ecee;
@@ -12,6 +13,7 @@
   --green: #afe052;
   --green-dark: #83a83e;
   --orange: #faaa03;
+  --orange-light: #fff7e6;
   --orange-dark: #bc8002;
 }
 

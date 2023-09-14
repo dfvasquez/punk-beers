@@ -15,7 +15,14 @@ export default function Home() {
       </div>
       <div className='home-content-container'>
         <img className='beers-image' src={beers} alt='3 Beers' />
-        <div className='content'>Have you ever wanted to search through Brewdog's expansive back catalogue of beer in a programmatic way? Maybe build a tool that pairs beer with food, or search beers with an abv of more than 4%? Well now your prayers have been answered!</div>
+        <div className='content'>
+          <div className='sub-content'>
+            Have you ever wanted to search through Brewdog's expansive back
+            catalogue of beer in a programmatic way? Maybe build a tool that
+            pairs beer with food, or search beers with an abv of more than 4%?
+            Well now your prayers have been answered!
+          </div>
+        </div>
       </div>
     </div>
   )
