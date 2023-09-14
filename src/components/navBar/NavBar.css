@@ -1,0 +1,18 @@
+.navbar.active {
+    position: fixed;
+    display: flex;
+    background-color: var(--primary-dark);
+    align-items: flex-start;
+    top: 0rem;
+    width: 100vw;
+    gap: 1.5625rem;
+    padding: 0.5rem 1rem;
+}
+
+.navbar.hidden {
+    display: none;
+}
+
+.navbar.scrollingBack {
+    box-shadow: 0 0 10rem 0;
+}

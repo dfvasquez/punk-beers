@@ -35,3 +35,11 @@ h1 {
   font-weight: 500;
   font-family: 'Alfa Slab One', cursive;
 }
+
+.not-link {
+  text-decoration: none;
+}
+
+.logo {
+  color: var(--primary-light);
+}
