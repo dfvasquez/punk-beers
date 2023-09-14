@@ -4,6 +4,7 @@
 :root {
   --primary: #213e53;
   --primary-dark: #192f3e;
+  --primary-light: #e9ecee;
   --secondary: #3b7695;
   --secondary-dark: #2c5970;
   --secondary-light: #ebf1f4;
@@ -30,5 +31,5 @@ code {
 h1 {
   font-size: 4rem;
   font-weight: 500;
-  font-family: 'New Rocker', cursive;
+  font-family: 'Alfa Slab One', cursive;
 }
