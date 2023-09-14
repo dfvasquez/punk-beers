@@ -1,0 +1,37 @@
+.beers-container {
+    justify-content: center;
+    margin: 10vh 1vw;
+    height: 10vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.75rem;
+    grid-auto-rows: minmax(30em, auto);
+}
+
+.grid-item {
+    background-color: #3498db;
+    border-radius: 1.5rem;
+    padding: 1rem;
+}
+
+
+.rect1 {
+    background-color: var(--orange);
+    border-radius: 1.5rem;
+
+}
+
+.rect2 {
+    background-color: var(--secondary);
+    border-radius: 1.5rem;
+
+}
+
+.rect3 {
+    background-color: var(--green);
+    border-radius: 1.5rem;
+
+}
