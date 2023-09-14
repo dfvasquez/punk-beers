@@ -1,8 +1,15 @@
+import { useNavigate } from 'react-router-dom'
 import beers from '../../assets/beers.svg'
 import ActionButton from '../../components/buttons/actionButton/ActionButton'
 import './Home.css'
 
 export default function Home() {
+  const navigate = useNavigate()
+
+  const handleButton = () => {
+    navigate('/beers')
+  }
+
   return (
     <div className='home-container'>
       <div className='home-sub-container'>
@@ -10,7 +17,7 @@ export default function Home() {
         <ActionButton
           text='Browse our beers!'
           type='secondary'
-          onClick={() => console.log('Clicked')}
+          onClick={handleButton}
         />
       </div>
       <div className='home-content-container'>
