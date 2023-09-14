@@ -1,13 +1,33 @@
+@font-face {
+  font-family: 'Newsreader';
+  src: url('./assets/fonts/Newsreader-VariableFont_opsz\,wght.ttf') format('truetype'),
+    url('./assets/fonts/Newsreader-Italic-VariableFont_opsz\,wght.ttf') format('truetype');
+}
+
+:root {
+  --primary: #213e53;
+  --primary-dark: #192f3e;
+  --secondary: #3b7695;
+  --secondary-dark: #2c5970;
+  --green: #afe052;
+  --green-dark: #83a83e;
+  --orange: #faaa03;
+  --orange-dark: #bc8002;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Newsreader', serif;
+  color: var(--primary-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, monospace;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 500;
 }
