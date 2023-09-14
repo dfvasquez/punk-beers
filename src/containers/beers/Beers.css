@@ -12,26 +12,37 @@
 }
 
 .grid-item {
-    background-color: #3498db;
-    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
+    background-color: var(--glass);
+    border-radius: 1.5rem;
 }
 
-
-.rect1 {
-    background-color: var(--orange);
-    border-radius: 1.5rem;
-
+.grid-item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
-.rect2 {
-    background-color: var(--secondary);
-    border-radius: 1.5rem;
-
+.beer-item-image-container {
+    width: 100%;
+    height: 25vh;
 }
 
-.rect3 {
-    background-color: var(--green);
-    border-radius: 1.5rem;
+.beer-item-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
+.beer-item-title {
+    color: var(--primary-dark)
+}
+
+.beer-item-footer {
+    margin-top: 2rem;
+}
+
+.beer-item-description {
+    color: var(--secondary-dark);
 }
