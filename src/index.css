@@ -1,14 +1,13 @@
-@font-face {
-  font-family: 'Newsreader';
-  src: url('./assets/fonts/Newsreader-VariableFont_opsz\,wght.ttf') format('truetype'),
-    url('./assets/fonts/Newsreader-Italic-VariableFont_opsz\,wght.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=New+Rocker&display=swap');
+
 
 :root {
   --primary: #213e53;
   --primary-dark: #192f3e;
   --secondary: #3b7695;
   --secondary-dark: #2c5970;
+  --secondary-light: #ebf1f4;
+  --secondary-light-hover: #e2eaef;
   --green: #afe052;
   --green-dark: #83a83e;
   --orange: #faaa03;
@@ -17,10 +16,11 @@
 
 body {
   margin: 0;
-  font-family: 'Newsreader', serif;
+  font-family: 'Bebas Neue', sans-serif, 'Alfa Slab One', cursive;
   color: var(--primary-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--secondary-light-hover);
 }
 
 code {
@@ -30,4 +30,5 @@ code {
 h1 {
   font-size: 4rem;
   font-weight: 500;
+  font-family: 'New Rocker', cursive;
 }

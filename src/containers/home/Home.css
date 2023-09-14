@@ -1,0 +1,9 @@
+.beers-image {
+    transform: translateY(11.5%);
+}
+
+#title {
+    text-align: center;
+    padding: 1rem 0;
+    margin: 5rem 0 0 0;
+}
