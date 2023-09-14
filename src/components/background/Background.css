@@ -1,0 +1,5 @@
+#background {
+    position: absolute;
+    transform: translateX(5%) translateY(10%);
+    width: 100wh;
+}
