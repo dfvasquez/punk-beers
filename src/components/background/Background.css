@@ -1,5 +1,8 @@
 #background {
-    position: fixed;
-    transform: translateX(5%) translateY(10%);
+    background: linear-gradient(360deg, var(--orange), var(--primary-light) 100%);
+    width: 100vw;
+    align-self: center;
     z-index: -5;
+    position: fixed;
+    filter: blur(0.4rem) sepia(10%);
 }
