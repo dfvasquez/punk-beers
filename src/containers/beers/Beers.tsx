@@ -35,9 +35,11 @@ export default function Beers() {
               </div>
               <div className='beer-item-footer'>
                 <h2 className='beer-item-title'>
-                  {beer.name} - {beer.abv}%
+                  {beer.name} ({beer.volume.value} {beer.volume.unit} -{' '}
+                  {beer.abv} %)
                 </h2>
-                <p className='beer-item-description'>{beer.description}</p>
+                <p>{beer.tagline}</p>
+                <p className='beer-item-description'>{beer.ingredients.yeast}</p>
               </div>
             </div>
           ))}
