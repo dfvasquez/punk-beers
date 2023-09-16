@@ -4,6 +4,12 @@
     height: 10vh;
 }
 
+.filters-container {
+    display: flex;
+    margin: 2rem 0;
+    justify-content: space-between;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -41,8 +47,4 @@
 
 .beer-item-footer {
     margin-top: 2rem;
-}
-
-.beer-item-description {
-    
 }

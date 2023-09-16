@@ -1,0 +1,60 @@
+.sort-by-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.sort-by-label {
+    font-size: 2em;
+    padding: 0 1rem;
+}
+
+#sort-select {
+    background-color: var(--secondary-light);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--secondary-dark);
+    border-radius: 1rem;
+    padding: 0.8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#sort-select:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+/* Style select options */
+select option {
+    background-color: var(--secondary-light);
+    /* Set the option background color */
+    color: var(--secondary);
+    /* Set the option text color */
+}
+
+/* Style select on hover */
+select:hover {
+    background-color: var(--secondary-light-hover);
+    /* Set hover background color */
+}
+
+select option {
+    background-color: var(--secondary-light);
+    /* Set the option background color */
+    color: var(--secondary);
+    /* Set the option text color */
+    padding: 0.5rem;
+    /* Add padding for spacing */
+    font-size: 1rem;
+    /* Set the font size */
+}
+
+/* Style select options on hover */
+select option:hover {
+    background-color: var(--secondary-light-hover);
+    /* Set hover background color */
+    color: var(--primary);
+    /* Change text color on hover */
+}

@@ -11,17 +11,31 @@
     cursor: pointer;
 }
 
-.action-button.primary {
-    background-color: var(--green);
+.action-button:hover:active {
+    background-color: var(--orange);
     color: var(--primary-dark);
 }
 
-.action-button:hover:active {
-    background-color: var(--orange);
+.action-button.primary {
+    background-color: var(--green);
     color: var(--primary-dark);
 }
 
 .action-button.secondary {
     background-color: var(--primary);
     color: var(--primary-light);
+}
+
+.action-button.inactive {
+    background-color: var(--orange-light);
+    color: var(--primary);
+    border: 0.01rem var(--orange) solid;
+    border-radius: 2rem;
+}
+
+.action-button.selected {
+    background-color: var(--orange);
+    color: var(--primary);
+    border: 0.01rem var(--orange) solid;
+    border-radius: 2rem;
 }

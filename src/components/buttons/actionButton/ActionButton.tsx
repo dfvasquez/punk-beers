@@ -2,7 +2,7 @@ import './ActionButton.css'
 
 interface IActionButton {
   text: string
-  type: 'primary' | 'secondary'
+  type: 'primary' | 'secondary' | 'inactive' | 'disabled' | 'selected'
   onClick: () => void
 }
 
