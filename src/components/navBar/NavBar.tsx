@@ -22,10 +22,24 @@ export default function NavBar() {
   }, [scrollTop])
 
   return (
-    <div className={classNames('navbar active', { hidden: isScrolling, scrollingBack:  scrollTop > 61})}>
-      <Link to='/' className='not-link'>
-        <h2 className='logo'>Punk Beers</h2>
-      </Link>
+    <div
+      className={classNames('navbar active', {
+        hidden: isScrolling,
+        scrollingBack: scrollTop > 61
+      })}>
+      <div className='logo-container'>
+        <Link to='/' className='not-link navbar-logo'>
+          <h2 className='logo'>Punk Beers</h2>
+        </Link>
+      </div>
+      <div className='pages-container'>
+        <Link to='/beers' className='not-link navbar-item'>
+          <h2 className='logo'>Beers</h2>
+        </Link>
+        <Link to='/beers' className='not-link navbar-item'>
+          <h2 className='logo'>My favorite beers</h2>
+        </Link>
+      </div>
     </div>
   )
 }

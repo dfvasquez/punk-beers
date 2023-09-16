@@ -2,10 +2,9 @@
     position: fixed;
     display: flex;
     background-color: var(--primary-dark);
-    align-items: flex-start;
+    justify-content: space-between;
     top: 0rem;
     width: 100vw;
-    gap: 1.5625rem;
     padding: 0.5rem 1rem;
     z-index: 100;
 }
@@ -16,4 +15,26 @@
 
 .navbar.scrollingBack {
     box-shadow: 0 0 1rem 0;
+}
+
+.navbar-logo {
+    padding: 0 0.5rem;
+}
+
+.navbar-item {
+    padding: 0 0.5rem;
+    width: 30%;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    width: 15vw;
+}
+
+.pages-container {
+    display: flex;
+    margin-right: 2rem;
+    width: 90vw;
+    justify-content: flex-end;
 }
