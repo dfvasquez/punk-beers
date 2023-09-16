@@ -1,18 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { RootState } from '../../store/store'
+import { IApi } from '../../interfaces/Beer'
 import Filter from '../../components/filters/Filter'
-import { getAllBeers } from '../../api/Beers'
-import { IBeer } from '../../interfaces/Beer'
-import { cleanBeersData } from '../../utils/beerDataHandler'
 import './Beers.css'
 
 export default function Beers() {
-  const [beers, setBeers] = useState<Array<IBeer>>([])
+  const navigate = useNavigate()
+  const beers = useSelector((state: RootState): IApi[] => state.beers.beers)
 
-  useEffect(() => {
-    getAllBeers().then((data) => {
-      setBeers(cleanBeersData(data))
-    })
-  }, [])
+  const handleOnClick = (beerId: string) => {
+    navigate(`/beers/${beerId}`)
+  }
 
   return (
     <div className='beers-container'>
@@ -21,23 +20,27 @@ export default function Beers() {
         <Filter />
       </div>
       <div className='grid-container'>
-        {beers.map((beer, index: number) => (
-          <div key={index} className='grid-item'>
-            <div className='beer-item-image-container'>
-              <img
-                className='beer-item-image'
-                src={beer.image_url}
-                alt='Beer'
-              />
+        {beers &&
+          beers.map((beer: IApi, index: number) => (
+            <div
+              key={index}
+              className='grid-item'
+              onClick={() => handleOnClick(beer.id)}>
+              <div className='beer-item-image-container'>
+                <img
+                  className='beer-item-image'
+                  src={beer.image_url}
+                  alt='Beer'
+                />
+              </div>
+              <div className='beer-item-footer'>
+                <h2 className='beer-item-title'>
+                  {beer.name} - {beer.abv}%
+                </h2>
+                <p className='beer-item-description'>{beer.description}</p>
+              </div>
             </div>
-            <div className='beer-item-footer'>
-              <h2 className='beer-item-title'>
-                {beer.name} - {beer.abv}%
-              </h2>
-              <p className='beer-item-description'>{beer.description}</p>
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   )

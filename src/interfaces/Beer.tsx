@@ -42,6 +42,7 @@ export interface IApi {
       add: string
       attribute: string
     }>
+    yeast: string
   }
 }
 

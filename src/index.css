@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=New+Rocker&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=Montserrat&family=New+Rocker&family=Roboto:ital@1&display=swap');
 
 :root {
-  --glass: rgba(255,247,230,0.2);
+  --glass: rgba(255, 247, 230, 0.2);
   --primary: #213e53;
   --primary-dark: #192f3e;
   --primary-light: #e9ecee;
@@ -34,6 +33,21 @@ h1 {
   font-size: 4rem;
   font-weight: 500;
   font-family: 'Alfa Slab One', cursive;
+}
+
+h2 {
+  font-size: 2em;
+  color: var(--primary-dark);
+}
+
+p {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--secondary-dark);
+}
+
+.italic {
+  font-family: 'Roboto';
 }
 
 .not-link {
