@@ -1,0 +1,36 @@
+.not-found-beer-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 1vw;
+    margin: 10vh 1vw;
+    align-items: center;
+}
+
+.not-found-beer-container img {
+    top: 40vh;
+    position: fixed;
+    z-index: -2;
+}
+
+.flipped {
+    transform: scaleX(-1);
+    left: auto;
+}
+
+.align-left {
+    left: 0;
+}
+
+.align-right {
+    right: 0;
+}
+
+.not-found-beer-footer {
+    display: flex;
+    padding: 1vh 10vw;
+    align-items: center;
+}
+
+.not-found-beer-footer h2 {
+    padding-right: 1vw;
+}

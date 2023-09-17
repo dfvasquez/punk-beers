@@ -1,6 +1,6 @@
 import './ActionButton.css'
 
-interface IActionButton {
+export interface IActionButton {
   text: string
   type: 'primary' | 'secondary' | 'inactive' | 'disabled' | 'selected'
   onClick: () => void

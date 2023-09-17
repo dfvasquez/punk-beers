@@ -1,8 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
-import ActionButton from '../../components/buttons/actionButton/ActionButton'
-import beers from '../../assets/beers.svg'
+import NotFound from '../../components/notFound/NotFound'
 import './Beer.css'
 
 const Beer = () => {
@@ -80,18 +79,18 @@ const Beer = () => {
           </div>
         </div>
       ) : (
-        <div className='not-found-beer-container'>
-          <h1>Beer not found</h1>
-          <h2>
-            OOPS! Seems the beer you're trying to search doesn't exist (yet).
-          </h2>
-          <div className='not-found-beer-footer'>
-            <h2>Check out our amazing beers</h2>
-            <ActionButton text='here' onClick={handleButton} type='primary' />
-          </div>
-          <img className='align-left' src={beers} alt='3 Beers' />
-          <img className='flipped align-right' src={beers} alt='3 Beers' />
-        </div>
+        <NotFound
+          title='BEER NOT FOUND'
+          description={`OOPS! Seems the beer you're trying to find doesn't exist (yet).`}
+          action={{
+            text: 'Check out our amazing beers',
+            buttonProps: {
+              text: 'here',
+              onClick: handleButton,
+              type: 'primary'
+            }
+          }}
+        />
       )}
     </div>
   )
