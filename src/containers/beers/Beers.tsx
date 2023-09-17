@@ -47,11 +47,11 @@ export default function Beers() {
         <Filter />
         <SortBy onSort={handleSort} />
       </div>
-        <ActionButton
-          onClick={clearUserPreferences}
-          text='Clear sorted preference'
-          type='secondary'
-        />
+      <ActionButton
+        onClick={clearUserPreferences}
+        text='Clear sorted preference'
+        type='secondary'
+      />
       <div className='grid-container'>
         {sortedBeers &&
           sortedBeers.map((beer: IApi, index: number) => (
@@ -69,7 +69,7 @@ export default function Beers() {
               <div className='beer-item-footer'>
                 <h2 className='beer-item-title'>
                   {beer.name} ({beer.volume.value} {beer.volume.unit} -{' '}
-                  {beer.abv} %)
+                  {beer.abv} % - {beer.ibu} IBU)
                 </h2>
                 <p>{beer.tagline}</p>
                 <p className='beer-item-description'>

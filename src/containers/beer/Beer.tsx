@@ -28,7 +28,7 @@ const Beer = () => {
             <div className='beer-description-container'>
               <h2 className='beer-main-description'>
                 {beer.tagline} ({beer.volume.value} {beer.volume.unit} -{' '}
-                {beer.abv} %)
+                {beer.abv} % - {beer.ibu} IBU)
               </h2>
               <p className='beer-long-description'>{beer.description}</p>
               {beer.brewers_tips && (
