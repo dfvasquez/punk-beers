@@ -7,6 +7,7 @@ import Filter from '../../components/filters/Filter'
 import SortBy from '../../components/sortBy/SortBy'
 import { sortByName, sortByAbv, sortByIbu } from '../../utils/beerDataHandler'
 import './Beers.css'
+import ActionButton from '../../components/buttons/actionButton/ActionButton'
 
 export default function Beers() {
   const navigate = useNavigate()
@@ -35,12 +36,22 @@ export default function Beers() {
     }
   }, [beers])
 
+  const clearUserPreferences = () => {
+    localStorage.removeItem('sortingOption')
+    // add more stuffs if its gonna be in this area
+  }
+
   return (
     <div className='beers-container'>
       <div className='filters-container'>
         <Filter />
         <SortBy onSort={handleSort} />
       </div>
+        <ActionButton
+          onClick={clearUserPreferences}
+          text='Clear sorted preference'
+          type='secondary'
+        />
       <div className='grid-container'>
         {sortedBeers &&
           sortedBeers.map((beer: IApi, index: number) => (

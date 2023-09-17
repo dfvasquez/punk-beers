@@ -11,14 +11,15 @@
 }
 
 #sort-select {
-    background-color: var(--secondary-light);
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
-    color: var(--secondary-dark);
-    border-radius: 1rem;
+    border-radius: 2rem;
     padding: 0.8rem;
     align-items: center;
     justify-content: center;
+    background-color: var(--orange-light);
+    color: var(--primary);
+    border: 0.01rem var(--orange) solid;
 }
 
 #sort-select:hover {
@@ -57,4 +58,8 @@ select option:hover {
     /* Set hover background color */
     color: var(--primary);
     /* Change text color on hover */
+}
+
+.sort-by-option {
+    background-color: red;
 }
