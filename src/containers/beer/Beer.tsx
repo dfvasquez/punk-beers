@@ -1,13 +1,21 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
+import ActionButton from '../../components/buttons/actionButton/ActionButton'
+import beers from '../../assets/beers.svg'
 import './Beer.css'
 
 const Beer = () => {
   const { beerId } = useParams()
+  const navigate = useNavigate()
   const beer = useSelector((state: RootState) =>
     state.beers.beers.find((beer) => beer.id.toString() === beerId)
   )
+
+  const handleButton = () => {
+    navigate('/beers')
+  }
+
   return (
     <div className='beer-container'>
       {beer ? (
@@ -50,7 +58,7 @@ const Beer = () => {
               <h2 className='food-pairing-title'>Malt ingredients</h2>
               <div className='food-ingredients-sub-container'>
                 {beer.ingredients.malt.map((ingredient, index: number) => (
-                  <p className='food-ingredient'>
+                  <p key={index} className='food-ingredient'>
                     {ingredient.name} ({ingredient.amount.value}{' '}
                     {ingredient.amount.unit})
                   </p>
@@ -62,7 +70,7 @@ const Beer = () => {
               <h2 className='food-pairing-title'>Hops ingredients</h2>
               <div className='food-ingredients-sub-container'>
                 {beer.ingredients.hops.map((ingredient, index: number) => (
-                  <p className='food-ingredient'>
+                  <p key={index} className='food-ingredient'>
                     {ingredient.name} ({ingredient.amount.value}{' '}
                     {ingredient.amount.unit})
                   </p>
@@ -70,27 +78,20 @@ const Beer = () => {
               </div>
             </div>
           </div>
-
-          {/* {beer.method.mash_temp.map((mash, index: number) => (
-              <div>
-                <p className='beer-item-description'>Mash</p>
-                <p>
-                  Temperature: {mash.temp.value} {mash.temp.unit}
-                </p>
-                <p>Duration: {mash.duration}</p>
-              </div>
-            ))} */}
-          {/*  <div>
-              <p className='beer-item-description'>Fermentation</p>
-              <p>
-                Temperature: {beer.method.fermentation.temp.value}{' '}
-                {beer.method.fermentation.temp.unit}
-              </p>
-            </div> */}
-          {/*   {beer.method.twist && <p>Twist: {beer.method.twist}</p>} */}
         </div>
       ) : (
-        <div> BEER NOT FOUND</div>
+        <div className='not-found-beer-container'>
+          <h1>Beer not found</h1>
+          <h2>
+            OOPS! Seems the beer you're trying to search doesn't exist (yet).
+          </h2>
+          <div className='not-found-beer-footer'>
+            <h2>Check out our amazing beers</h2>
+            <ActionButton text='here' onClick={handleButton} type='primary' />
+          </div>
+          <img className='align-left' src={beers} alt='3 Beers' />
+          <img className='flipped align-right' src={beers} alt='3 Beers' />
+        </div>
       )}
     </div>
   )
