@@ -54,6 +54,11 @@ p {
   text-decoration: none;
 }
 
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .logo {
   color: var(--primary-light);
   font-family: 'New rocker', cursive;

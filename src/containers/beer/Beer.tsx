@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import NotFound from '../../components/notFound/NotFound'
+import Definition from '../../components/definition/Definition'
 import './Beer.css'
 
 const Beer = () => {
@@ -25,54 +26,64 @@ const Beer = () => {
               <img className='beer-image' src={beer.image_url} alt='Beer' />
             </div>
             <div className='beer-description-container'>
-              <h2 className='beer-main-description'>
-                {beer.tagline} ({beer.volume.value} {beer.volume.unit} -{' '}
-                {beer.abv} % - {beer.ibu} IBU)
-              </h2>
-              <p className='beer-long-description'>{beer.description}</p>
-              {beer.brewers_tips && (
-                <p className='beer-long-description italic'>
-                  "{beer.brewers_tips}"
-                </p>
-              )}
-              <div className='food-pairing-container'>
-                <h2 className='food-pairing-title'>Food pairing</h2>
-                <p className='food-pairing-description'>
-                  {beer.food_pairing.join(', ')}.
-                </p>
-              </div>
+              <Definition
+                title={`${beer.tagline} (${beer.volume.value} ${beer.volume.unit} - ${beer.abv} % - ${beer.ibu} IBU)`}
+                description={
+                  <>
+                    <p>{beer.description}</p>
+                    {beer.brewers_tips && (
+                      <p className='italic'>"{beer.brewers_tips}"</p>
+                    )}
+                  </>
+                }
+              />
+              <Definition
+                title={`Food pairing`}
+                description={<p>{beer.food_pairing.join(', ')}.</p>}
+              />
 
               {beer.ingredients.yeast && (
-                <div className='food-pairing-container'>
-                  <h2 className='food-pairing-title'>Yeast</h2>
-                  <p className='food-pairing-description'>
-                    {beer.ingredients.yeast}.
-                  </p>
-                </div>
+                <Definition
+                  title={`Yeast`}
+                  description={<p>{beer.ingredients.yeast}.</p>}
+                />
               )}
-              <div className='food-ingredients-container'>
-                <div className='food-ingredients-malt-container'>
-                  <h2 className='food-pairing-title'>Malt ingredients</h2>
-                  <div className='food-ingredients-sub-container'>
-                    {beer.ingredients.malt.map((ingredient, index: number) => (
-                      <p key={index} className='food-ingredient'>
-                        {ingredient.name} ({ingredient.amount.value}{' '}
-                        {ingredient.amount.unit})
-                      </p>
-                    ))}
-                  </div>
+
+              <div>
+                <div>
+                  <Definition
+                    title={`Malt ingredients`}
+                    description={
+                      <div>
+                        {beer.ingredients.malt.map(
+                          (ingredient, index: number) => (
+                            <p key={index}>
+                              {ingredient.name} ({ingredient.amount.value}{' '}
+                              {ingredient.amount.unit})
+                            </p>
+                          )
+                        )}
+                      </div>
+                    }
+                  />
                 </div>
 
-                <div className='food-ingredients-hops-container'>
-                  <h2 className='food-pairing-title'>Hops ingredients</h2>
-                  <div className='food-ingredients-sub-container'>
-                    {beer.ingredients.hops.map((ingredient, index: number) => (
-                      <p key={index} className='food-ingredient'>
-                        {ingredient.name} ({ingredient.amount.value}{' '}
-                        {ingredient.amount.unit})
-                      </p>
-                    ))}
-                  </div>
+                <div>
+                  <Definition
+                    title={`Hops ingredients`}
+                    description={
+                      <div>
+                        {beer.ingredients.hops.map(
+                          (ingredient, index: number) => (
+                            <p key={index}>
+                              {ingredient.name} ({ingredient.amount.value}{' '}
+                              {ingredient.amount.unit})
+                            </p>
+                          )
+                        )}
+                      </div>
+                    }
+                  />
                 </div>
               </div>
             </div>

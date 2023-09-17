@@ -7,7 +7,6 @@ import Filter from '../../components/filters/Filter'
 import SortBy from '../../components/sortBy/SortBy'
 import { sortByName, sortByAbv, sortByIbu } from '../../utils/beerDataHandler'
 import './Beers.css'
-import ActionButton from '../../components/buttons/actionButton/ActionButton'
 
 export default function Beers() {
   const navigate = useNavigate()
