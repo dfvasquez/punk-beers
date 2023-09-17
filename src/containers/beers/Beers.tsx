@@ -36,22 +36,12 @@ export default function Beers() {
     }
   }, [beers])
 
-  const clearUserPreferences = () => {
-    localStorage.removeItem('sortingOption')
-    // add more stuffs if its gonna be in this area
-  }
-
   return (
     <div className='beers-container'>
       <div className='filters-container'>
         <Filter />
         <SortBy onSort={handleSort} />
       </div>
-      <ActionButton
-        onClick={clearUserPreferences}
-        text='Clear sorted preference'
-        type='secondary'
-      />
       <div className='grid-container'>
         {sortedBeers &&
           sortedBeers.map((beer: IApi, index: number) => (

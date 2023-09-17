@@ -50,30 +50,30 @@ const Beer = () => {
                   </p>
                 </div>
               )}
-            </div>
-          </div>
-          <div className='food-ingredients-container'>
-            <div className='food-ingredients-malt-container'>
-              <h2 className='food-pairing-title'>Malt ingredients</h2>
-              <div className='food-ingredients-sub-container'>
-                {beer.ingredients.malt.map((ingredient, index: number) => (
-                  <p key={index} className='food-ingredient'>
-                    {ingredient.name} ({ingredient.amount.value}{' '}
-                    {ingredient.amount.unit})
-                  </p>
-                ))}
-              </div>
-            </div>
+              <div className='food-ingredients-container'>
+                <div className='food-ingredients-malt-container'>
+                  <h2 className='food-pairing-title'>Malt ingredients</h2>
+                  <div className='food-ingredients-sub-container'>
+                    {beer.ingredients.malt.map((ingredient, index: number) => (
+                      <p key={index} className='food-ingredient'>
+                        {ingredient.name} ({ingredient.amount.value}{' '}
+                        {ingredient.amount.unit})
+                      </p>
+                    ))}
+                  </div>
+                </div>
 
-            <div className='food-ingredients-hops-container'>
-              <h2 className='food-pairing-title'>Hops ingredients</h2>
-              <div className='food-ingredients-sub-container'>
-                {beer.ingredients.hops.map((ingredient, index: number) => (
-                  <p key={index} className='food-ingredient'>
-                    {ingredient.name} ({ingredient.amount.value}{' '}
-                    {ingredient.amount.unit})
-                  </p>
-                ))}
+                <div className='food-ingredients-hops-container'>
+                  <h2 className='food-pairing-title'>Hops ingredients</h2>
+                  <div className='food-ingredients-sub-container'>
+                    {beer.ingredients.hops.map((ingredient, index: number) => (
+                      <p key={index} className='food-ingredient'>
+                        {ingredient.name} ({ingredient.amount.value}{' '}
+                        {ingredient.amount.unit})
+                      </p>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

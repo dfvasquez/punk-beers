@@ -62,8 +62,7 @@
 
 .food-ingredients-container {
     display: flex;
-    justify-content: center;
-    transform: translateX(-1.5vw);
+    flex-direction: column;
 }
 
 .food-ingredients-sub-container {

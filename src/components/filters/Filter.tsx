@@ -26,7 +26,7 @@ export default function Filter() {
       <div className='filter-container'>
         <ActionButton
           text={'Filters'}
-          type={show ? 'selected' : 'inactive'}
+          type={'selected'}
           onClick={() => setShow(true)}
         />
       </div>

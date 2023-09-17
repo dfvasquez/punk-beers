@@ -1,8 +1,16 @@
 .sort-by-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-end;
     margin: 2rem 0;
+    padding-left: 10rem;
+    width: 100%;
+}
+
+.sort-by-sub-container {
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
 }
 
 .sort-by-label {
@@ -17,7 +25,7 @@
     padding: 0.8rem;
     align-items: center;
     justify-content: center;
-    background-color: var(--orange-light);
+    background-color: var(--orange);
     color: var(--primary);
     border: 0.01rem var(--orange) solid;
 }
