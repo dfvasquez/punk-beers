@@ -2,22 +2,27 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
-import SearchInput, { ISearchBarProps } from '../searchBar/SearchBar'
 import { getFilteredBeers } from '../../api/Beers'
+import { constants } from '../../utils/constants'
+import SearchInput from '../searchBar/SearchBar'
 import './NavBar.css'
-import { setBeers } from '../../store/beersSlice'
+import { setBeers, setLoading } from '../../store/beersSlice'
 
 export default function NavBar() {
   const dispatch = useDispatch()
-  const [searchResults, setSearchResults] = useState([])
+  const { loadingShort } = constants
   const [isScrolling, setIsScrolling] = useState(false)
   const [scrollTop, setScrollTop] = useState(0)
 
   const handleSearch = (query: string) => {
-    getFilteredBeers(query).then((data) => {
-      console.log({data})
-      dispatch(setBeers(data))
-    })
+    dispatch(setLoading(true))
+    getFilteredBeers(query)
+      .then((data) => {
+        dispatch(setBeers(data))
+      })
+      .finally(() => {
+        setTimeout(() => dispatch(setLoading(false)), loadingShort)
+      })
   }
 
   useEffect(() => {
@@ -46,13 +51,10 @@ export default function NavBar() {
         </Link>
       </div>
       <div className='pages-container'>
-        <Link to='/beers' className='not-link navbar-item'>
+        {/* <Link to='/beers' className='not-link navbar-item'>
           <h2 className='logo'>Beers</h2>
-        </Link>
-        <Link to='/beers' className='not-link navbar-item'>
-          <h2 className='logo'>My favorite beers</h2>
-        </Link>
-        <SearchInput onSearch={handleSearch}/>
+        </Link> */}
+        <SearchInput onSearch={handleSearch} />
       </div>
     </div>
   )

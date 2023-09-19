@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setBeers } from './store/beersSlice'
+import { setBeers, setLoading } from './store/beersSlice'
 import { getAllBeers } from './api/Beers'
+import { constants } from './utils/constants'
 import Nav from './components/navBar/NavBar'
 import Background from './components/background/Background'
 import NotFound from './components/notFound/NotFound'
@@ -11,13 +12,19 @@ import Beers from './containers/beers/Beers'
 import Beer from './containers/beer/Beer'
 
 const App = () => {
+  const { loadingLong } = constants
   const dispatch = useDispatch()
 
   useEffect(() => {
-    getAllBeers().then((data) => {
-      dispatch(setBeers(data))
-    })
-  }, [dispatch])
+    dispatch(setLoading(true))
+    getAllBeers()
+      .then((data) => {
+        dispatch(setBeers(data))
+      })
+      .finally(() => {
+        setTimeout(() => dispatch(setLoading(false)), loadingLong)
+      })
+  }, [dispatch, loadingLong])
   return (
     <Router>
       <Nav />

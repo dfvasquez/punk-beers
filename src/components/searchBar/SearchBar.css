@@ -1,0 +1,17 @@
+.search-bar-container {
+
+    display: flex;
+    margin: 1rem 0;
+}
+
+.search-bar-container input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    padding: 0 20rem 0 0.5rem;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+}
+
+.search-bar-container input:hover {
+   transform: scale(1.05);
+}

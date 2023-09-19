@@ -2,11 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 import { IApi } from '../interfaces/Beer'
 
 export interface IBeerState {
-  beers: IApi[]
+  beers: IApi[],
+  loading: boolean;
 }
 
 const initialState: IBeerState = {
-  beers: []
+  beers: [],
+  loading: false
 }
 
 const beersSlice = createSlice({
@@ -15,9 +17,12 @@ const beersSlice = createSlice({
   reducers: {
     setBeers: (state, action) => {
       state.beers = action.payload
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload
     }
   }
 })
 
-export const { setBeers } = beersSlice.actions
+export const { setBeers, setLoading } = beersSlice.actions
 export default beersSlice.reducer

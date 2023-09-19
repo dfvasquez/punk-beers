@@ -1,20 +1,39 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../store/store'
+import { setBeers, setLoading } from '../../store/beersSlice'
+import { getAllBeers } from '../../api/Beers'
 import { IApi } from '../../interfaces/Beer'
-import Filter from '../../components/filters/Filter'
-import SortBy from '../../components/sortBy/SortBy'
+import { constants } from '../../utils/constants'
 import { sortByName, sortByAbv, sortByIbu } from '../../utils/beerDataHandler'
+import SortBy from '../../components/sortBy/SortBy'
+import NotFound from '../../components/notFound/NotFound'
 import './Beers.css'
 
 export default function Beers() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { loadingShort } = constants
+  const loading = useSelector(
+    (state: RootState): boolean => state.beers.loading
+  )
   const beers = useSelector((state: RootState): IApi[] => state.beers.beers)
   const [sortedBeers, setSortedBeers] = useState<IApi[]>()
 
   const handleOnClick = (beerId: string) => {
     navigate(`/beers/${beerId}`)
+  }
+
+  const handleButton = () => {
+    dispatch(setLoading(true))
+    getAllBeers()
+      .then((data) => {
+        dispatch(setBeers(data))
+      })
+      .finally(() => {
+        setTimeout(() => dispatch(setLoading(false)), loadingShort)
+      })
   }
 
   const handleSort = (criteria: string) => {
@@ -37,37 +56,63 @@ export default function Beers() {
 
   return (
     <div className='beers-container'>
-      <div className='filters-container'>
-        <Filter />
-        <SortBy onSort={handleSort} />
-      </div>
-      <div className='grid-container'>
-        {sortedBeers &&
-          sortedBeers.map((beer: IApi, index: number) => (
-            <div
-              key={index}
-              className='grid-item'
-              onClick={() => handleOnClick(beer.id)}>
-              <div className='beer-item-image-container'>
-                <img
-                  className='beer-item-image'
-                  src={beer.image_url}
-                  alt='Beer'
-                />
+      {loading ? (
+        <div className='loading-container'>
+          <div className='spinner' />
+        </div>
+      ) : (
+        <>
+          {sortedBeers?.length ? (
+            <>
+              <div className='filters-container'>
+                <SortBy onSort={handleSort} />
               </div>
-              <div className='beer-item-footer'>
-                <h2 className='beer-item-title'>
-                  {beer.name} ({beer.volume.value} {beer.volume.unit} -{' '}
-                  {beer.abv} % - {beer.ibu} IBU)
-                </h2>
-                <p>{beer.tagline}</p>
-                <p className='beer-item-description'>
-                  {beer.ingredients.yeast}
-                </p>
+              <div className='grid-container'>
+                {sortedBeers &&
+                  sortedBeers.map((beer: IApi, index: number) => (
+                    <div
+                      key={index}
+                      className='grid-item'
+                      onClick={() => handleOnClick(beer.id)}>
+                      <div className='beer-item-image-container'>
+                        <img
+                          className='beer-item-image'
+                          src={beer.image_url}
+                          alt='Beer'
+                        />
+                      </div>
+                      <div className='beer-item-footer'>
+                        <h2 className='beer-item-title'>
+                          {beer.name} ({beer.volume.value} {beer.volume.unit} -{' '}
+                          {beer.abv} % - {beer.ibu} IBU)
+                        </h2>
+                        <p>{beer.tagline}</p>
+                        <p className='beer-item-description'>
+                          {beer.ingredients.yeast}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
               </div>
+            </>
+          ) : (
+            <div className='empty-container'>
+              <NotFound
+                title={`BEERS NOT FOUND`}
+                description={`We couldn't find a beer that includes the parameters of your search`}
+                action={{
+                  text: 'Check out our amazing beers',
+                  buttonProps: {
+                    text: 'here',
+                    onClick: handleButton,
+                    type: 'primary'
+                  }
+                }}
+              />
             </div>
-          ))}
-      </div>
+          )}
+        </>
+      )}
     </div>
   )
 }
