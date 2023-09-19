@@ -59,7 +59,9 @@ export default function Beers() {
     <div className='beers-container'>
       {loading ? (
         <div className='loading-container'>
-          <div className='spinner' />
+          <div className='spinner'>
+            <img className='loading-beer' src={defaultBeerImage} alt='Beers' />
+          </div>
         </div>
       ) : (
         <>

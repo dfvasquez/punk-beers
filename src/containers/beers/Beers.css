@@ -29,6 +29,14 @@
     }
 }
 
+.loading-beer {
+    width: 10vw;
+    height: 10vh;
+    margin-top: 1.25rem;
+    margin-left: 0.8rem;
+    filter: grayscale();
+}
+
 .empty-container {
     justify-content: center;
 }
