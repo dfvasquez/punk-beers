@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
-import { getFilteredBeers } from '../../api/Beers'
+import { getBeersByName } from '../../api/Beers'
 import { constants } from '../../utils/constants'
 import SearchInput from '../searchBar/SearchBar'
 import './NavBar.css'
@@ -16,7 +16,7 @@ export default function NavBar() {
 
   const handleSearch = (query: string) => {
     dispatch(setLoading(true))
-    getFilteredBeers(query)
+    getBeersByName(query)
       .then((data) => {
         dispatch(setBeers(data))
       })
