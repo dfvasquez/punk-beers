@@ -44,12 +44,3 @@ export interface IApi {
     yeast: string
   }
 }
-
-export interface IBeer {
-  id: string
-  name: string
-  description: string
-  image_url: string
-  abv: number
-  brewers_tips: string
-}

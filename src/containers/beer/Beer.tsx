@@ -1,51 +1,79 @@
-import { useNavigate, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import NotFound from '../../components/notFound/NotFound'
 import Definition from '../../components/definition/Definition'
+import { useEffect, useState } from 'react'
+import { setLoading } from '../../store/beersSlice'
+import { getBeerById } from '../../api/Beers'
+import { IApi } from '../../interfaces/Beer'
+import { constants } from '../../utils/constants'
+import defaultBeerImage from '../../assets/beers.svg'
 import './Beer.css'
 
 const Beer = () => {
   const { beerId } = useParams()
+  const { loadingShort } = constants
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const beer = useSelector((state: RootState) =>
     state.beers.beers.find((beer) => beer.id.toString() === beerId)
   )
+  const [foundBeer, setFoundBeer] = useState<IApi>()
 
   const handleButton = () => {
     navigate('/beers')
   }
 
+  useEffect(() => {
+    if (!beer) {
+      dispatch(setLoading(true))
+      getBeerById(beerId)
+        .then((data) => {
+          if (data.length > 0) setFoundBeer(data[0])
+        })
+        .finally(() => {
+          setTimeout(() => dispatch(setLoading(false)), loadingShort)
+        })
+    } else {
+      setFoundBeer(beer)
+    }
+  }, [beer, dispatch, loadingShort, beerId])
+
   return (
     <div className='beer-container'>
-      {beer ? (
+      {foundBeer ? (
         <div className='beer-sub-container'>
-          <h1 className='beer-title'>{beer.name}</h1>
+          <h1 className='beer-title'>{foundBeer.name}</h1>
           <div className='beer-content-container'>
             <div className='beer-image-container'>
-              <img className='beer-image' src={beer.image_url} alt='Beer' />
+              <img
+                className='beer-image'
+                src={foundBeer.image_url ?? defaultBeerImage}
+                alt='Beer'
+              />
             </div>
             <div className='beer-description-container'>
               <Definition
-                title={`${beer.tagline} (${beer.volume.value} ${beer.volume.unit} - ${beer.abv} % - ${beer.ibu} IBU)`}
+                title={`${foundBeer.tagline} (${foundBeer.volume.value} ${foundBeer.volume.unit} - ${foundBeer.abv} % - ${foundBeer.ibu} IBU)`}
                 description={
                   <>
-                    <p>{beer.description}</p>
-                    {beer.brewers_tips && (
-                      <p className='italic'>"{beer.brewers_tips}"</p>
+                    <p>{foundBeer.description}</p>
+                    {foundBeer.brewers_tips && (
+                      <p className='italic'>"{foundBeer.brewers_tips}"</p>
                     )}
                   </>
                 }
               />
               <Definition
                 title={`Food pairing`}
-                description={<p>{beer.food_pairing.join(', ')}.</p>}
+                description={<p>{foundBeer.food_pairing.join(', ')}.</p>}
               />
 
-              {beer.ingredients.yeast && (
+              {foundBeer.ingredients.yeast && (
                 <Definition
                   title={`Yeast`}
-                  description={<p>{beer.ingredients.yeast}.</p>}
+                  description={<p>{foundBeer.ingredients.yeast}.</p>}
                 />
               )}
 
@@ -55,7 +83,7 @@ const Beer = () => {
                     title={`Malt ingredients`}
                     description={
                       <div>
-                        {beer.ingredients.malt.map(
+                        {foundBeer.ingredients.malt.map(
                           (ingredient, index: number) => (
                             <p key={index}>
                               {ingredient.name} ({ingredient.amount.value}{' '}
@@ -73,7 +101,7 @@ const Beer = () => {
                     title={`Hops ingredients`}
                     description={
                       <div>
-                        {beer.ingredients.hops.map(
+                        {foundBeer.ingredients.hops.map(
                           (ingredient, index: number) => (
                             <p key={index}>
                               {ingredient.name} ({ingredient.amount.value}{' '}

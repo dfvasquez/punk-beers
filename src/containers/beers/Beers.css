@@ -47,8 +47,6 @@
 }
 
 .grid-item {
-    display: flex;
-    flex-direction: column;
     padding: 1rem;
     background-color: var(--glass);
     border-radius: 1.5rem;

@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div className='home-container'>
-      <div className='home-sub-container'>
+      <div className='home-sub-container flex-col'>
         <h1 id='title'>Find the beer that match with you.</h1>
         <ActionButton
           text='Browse our beers!'

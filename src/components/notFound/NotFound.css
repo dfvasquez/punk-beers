@@ -1,6 +1,4 @@
 .not-found-beer-container {
-    display: flex;
-    flex-direction: column;
     padding: 2vh 1vw;
     margin: 10vh 1vw;
     align-items: center;

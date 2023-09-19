@@ -9,6 +9,7 @@ import { constants } from '../../utils/constants'
 import { sortByName, sortByAbv, sortByIbu } from '../../utils/beerDataHandler'
 import SortBy from '../../components/sortBy/SortBy'
 import NotFound from '../../components/notFound/NotFound'
+import defaultBeerImage from '../../assets/beers.svg'
 import './Beers.css'
 
 export default function Beers() {
@@ -72,12 +73,12 @@ export default function Beers() {
                   sortedBeers.map((beer: IApi, index: number) => (
                     <div
                       key={index}
-                      className='grid-item'
+                      className='grid-item flex-col'
                       onClick={() => handleOnClick(beer.id)}>
                       <div className='beer-item-image-container'>
                         <img
                           className='beer-item-image'
-                          src={beer.image_url}
+                          src={beer.image_url ?? defaultBeerImage}
                           alt='Beer'
                         />
                       </div>

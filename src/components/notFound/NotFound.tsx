@@ -16,7 +16,7 @@ interface INotFoundProps {
 
 const NotFound: React.FC<INotFoundProps> = ({ title, description, action }) => {
   return (
-    <div className='not-found-beer-container'>
+    <div className='not-found-beer-container flex-col'>
       <h1>{title}</h1>
       <h2>{description}</h2>
       {action && (
