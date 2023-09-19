@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation
+} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setBeers, setLoading } from './store/beersSlice'
 import { getAllBeers } from './api/Beers'
@@ -11,9 +16,15 @@ import Home from './containers/home/Home'
 import Beers from './containers/beers/Beers'
 import Beer from './containers/beer/Beer'
 
-const App = () => {
+const RoutesComponent = () => {
   const { loadingLong } = constants
   const dispatch = useDispatch()
+  const location = useLocation()
+
+  useEffect(() => {
+    // Scroll to the top of the page whenever the route changes
+    window.scrollTo(0, 0)
+  }, [location])
 
   useEffect(() => {
     dispatch(setLoading(true))
@@ -26,7 +37,7 @@ const App = () => {
       })
   }, [dispatch, loadingLong])
   return (
-    <Router>
+    <>
       <Nav />
       <Background />
       <Routes>
@@ -43,6 +54,14 @@ const App = () => {
           }
         />
       </Routes>
+    </>
+  )
+}
+
+const App = () => {
+  return (
+    <Router>
+      <RoutesComponent />
     </Router>
   )
 }
