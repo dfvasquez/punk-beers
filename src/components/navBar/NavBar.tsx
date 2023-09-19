@@ -1,11 +1,24 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
+import SearchInput, { ISearchBarProps } from '../searchBar/SearchBar'
+import { getFilteredBeers } from '../../api/Beers'
 import './NavBar.css'
+import { setBeers } from '../../store/beersSlice'
 
 export default function NavBar() {
+  const dispatch = useDispatch()
+  const [searchResults, setSearchResults] = useState([])
   const [isScrolling, setIsScrolling] = useState(false)
   const [scrollTop, setScrollTop] = useState(0)
+
+  const handleSearch = (query: string) => {
+    getFilteredBeers(query).then((data) => {
+      console.log({data})
+      dispatch(setBeers(data))
+    })
+  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -39,6 +52,7 @@ export default function NavBar() {
         <Link to='/beers' className='not-link navbar-item'>
           <h2 className='logo'>My favorite beers</h2>
         </Link>
+        <SearchInput onSearch={handleSearch}/>
       </div>
     </div>
   )
