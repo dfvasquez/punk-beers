@@ -25,9 +25,8 @@ export default function Home() {
         <div className='content'>
           <div className='sub-content'>
             Have you ever wanted to search through Brewdog's expansive back
-            catalogue of beer in a programmatic way? Maybe build a tool that
-            pairs beer with food, or search beers with an abv of more than 4%?
-            Well now your prayers have been answered!
+            catalogue of beer? Here you can find the perfect beer that match
+            with you!
           </div>
         </div>
       </div>

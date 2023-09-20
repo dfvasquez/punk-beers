@@ -3,10 +3,10 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  useLocation
+  useNavigate
 } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setBeers, setLoading } from './store/beersSlice'
+import { setBeers, setLoading, setTotalPages } from './store/beersSlice'
 import { getAllBeers } from './api/Beers'
 import { constants } from './utils/constants'
 import Nav from './components/navBar/NavBar'
@@ -18,19 +18,15 @@ import Beer from './containers/beer/Beer'
 
 const RoutesComponent = () => {
   const { loadingLong } = constants
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  const location = useLocation()
-
-  useEffect(() => {
-    // Scroll to the top of the page whenever the route changes
-    window.scrollTo(0, 0)
-  }, [location])
 
   useEffect(() => {
     dispatch(setLoading(true))
-    getAllBeers()
+    getAllBeers(1)
       .then((data) => {
         dispatch(setBeers(data))
+        dispatch(setTotalPages(data))
       })
       .finally(() => {
         setTimeout(() => dispatch(setLoading(false)), loadingLong)
@@ -50,6 +46,14 @@ const RoutesComponent = () => {
             <NotFound
               title='404 NOT FOUND'
               description={`OOPS! Seems the page you're trying to find doesn't exist (yet).`}
+              action={{
+                text: 'Check out our amazing beers',
+                buttonProps: {
+                  text: 'here',
+                  onClick: () => navigate('/beers'),
+                  type: 'primary'
+                }
+              }}
             />
           }
         />

@@ -16,8 +16,10 @@
 }
 
 .action-button.primary {
-    background-color: var(--green);
-    color: var(--primary-dark);
+    background-color: var(--orange);
+    color: var(--primary);
+    border: 0.01rem var(--orange) solid;
+    border-radius: 2rem;
 }
 
 .action-button.secondary {
@@ -27,13 +29,6 @@
 
 .action-button.inactive {
     background-color: var(--orange-light);
-    color: var(--primary);
-    border: 0.01rem var(--orange) solid;
-    border-radius: 2rem;
-}
-
-.action-button.selected {
-    background-color: var(--orange);
     color: var(--primary);
     border: 0.01rem var(--orange) solid;
     border-radius: 2rem;

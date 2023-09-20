@@ -26,3 +26,12 @@ export const sortByIbu = (beers: IApi[]) => {
   })
   return beers
 }
+
+export const sortById = (beers: IApi[]) => {
+  beers.sort((beer1, beer2) => {
+    if (beer1.id < beer2.id) return -1
+    if (beer1.id > beer2.id) return 1
+    return 0
+  })
+  return beers
+}

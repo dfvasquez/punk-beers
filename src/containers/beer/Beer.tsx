@@ -16,6 +16,7 @@ const Beer = () => {
   const { loadingShort } = constants
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const location = useLocation()
   const beer = useSelector((state: RootState) =>
     state.beers.beers.find((beer) => beer.id.toString() === beerId)
   )
@@ -25,6 +26,10 @@ const Beer = () => {
     navigate('/beers')
   }
 
+  /* useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location])
+ */
   useEffect(() => {
     if (!beer) {
       dispatch(setLoading(true))

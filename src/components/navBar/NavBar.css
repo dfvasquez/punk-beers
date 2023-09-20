@@ -4,7 +4,7 @@
     background-color: var(--primary-dark);
     justify-content: space-between;
     top: 0rem;
-    width: 100vw;
+    width: 100%;
     padding: 0.5rem 1rem;
     z-index: 100;
 }
@@ -19,12 +19,6 @@
 
 .navbar-logo {
     padding: 0 0.5rem;
-}
-
-.navbar-item {
-    padding: 0 0.5rem;
-    width: 30%;
-    text-align: center;
 }
 
 .logo-container {

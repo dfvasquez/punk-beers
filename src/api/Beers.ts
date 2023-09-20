@@ -1,10 +1,14 @@
 import axios, { AxiosError, AxiosResponse } from 'axios'
 import { IApi } from '../interfaces/Beer'
+import { constants } from '../utils/constants'
 
 const BASE_URL = process.env.REACT_APP_API ?? ''
 
-export const getAllBeers = (): Promise<[] | IApi[]> => {
-  const url = `${BASE_URL}?per_page=15`
+export const getAllBeers = (
+  page: number,
+  perPage: number = constants.perPage
+): Promise<[] | IApi[]> => {
+  const url = `${BASE_URL}?page=${page}&per_page=${perPage}`
 
   return axios
     .get(url)
@@ -15,8 +19,12 @@ export const getAllBeers = (): Promise<[] | IApi[]> => {
     })
 }
 
-export const getBeersByName = (beerName: string): Promise<[] | IApi[]> => {
-  const url = `${BASE_URL}?beer_name=${beerName}`
+export const getBeersByName = (
+  beerName: string,
+  page: number,
+  perPage: number = constants.perPage
+): Promise<[] | IApi[]> => {
+  const url = `${BASE_URL}?page=${page}&per_page=${perPage}&beer_name=${beerName}`
 
   return axios
     .get(url)

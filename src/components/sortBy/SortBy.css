@@ -35,39 +35,47 @@
     transform: scale(1.05);
 }
 
-/* Style select options */
-select option {
-    background-color: var(--secondary-light);
-    /* Set the option background color */
-    color: var(--secondary);
-    /* Set the option text color */
+
+@media (max-width: 1200px) {
+    .sort-by-container {
+        padding-left: 0;
+    }
 }
 
-/* Style select on hover */
-select:hover {
-    background-color: var(--secondary-light-hover);
-    /* Set hover background color */
+@media (max-width: 1000px) {
+    .sort-by-container {
+        flex-direction: column;
+
+    }
+
+    .sort-by-sub-container {
+        margin-bottom: 1rem;
+    }
 }
 
-select option {
-    background-color: var(--secondary-light);
-    /* Set the option background color */
-    color: var(--secondary);
-    /* Set the option text color */
-    padding: 0.5rem;
-    /* Add padding for spacing */
-    font-size: 1rem;
-    /* Set the font size */
+@media (max-width: 700px) {
+    .sort-by-sub-container {
+        flex-direction: column;
+    }
+    #sort-select {
+        padding: 0.9rem 1rem;
+    }
 }
 
-/* Style select options on hover */
-select option:hover {
-    background-color: var(--secondary-light-hover);
-    /* Set hover background color */
-    color: var(--primary);
-    /* Change text color on hover */
+@media (max-width: 500px) {
+    #sort-select {
+        font-size: 1.2rem;
+    }
 }
 
-.sort-by-option {
-    background-color: red;
+@media (max-width: 400px) {
+    #sort-select {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 350px) {
+    #sort-select {
+        font-size: 0.5rem;
+    }
 }
