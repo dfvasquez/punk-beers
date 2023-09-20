@@ -1,6 +1,7 @@
 .beers-container {
     justify-content: center;
-    margin: 10vh 1vw;
+    padding: 10vh 1vw;
+    margin: 0;
     height: 10vh;
 }
 

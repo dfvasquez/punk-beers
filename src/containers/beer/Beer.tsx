@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import NotFound from '../../components/notFound/NotFound'
@@ -16,7 +16,6 @@ const Beer = () => {
   const { loadingShort } = constants
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const location = useLocation()
   const beer = useSelector((state: RootState) =>
     state.beers.beers.find((beer) => beer.id.toString() === beerId)
   )
@@ -26,10 +25,6 @@ const Beer = () => {
     navigate('/beers')
   }
 
-  /* useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location])
- */
   useEffect(() => {
     if (!beer) {
       dispatch(setLoading(true))

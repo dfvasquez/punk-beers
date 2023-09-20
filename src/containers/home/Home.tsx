@@ -21,7 +21,9 @@ export default function Home() {
         />
       </div>
       <div className='home-content-container'>
-        <img className='beers-image' src={beers} alt='3 Beers' />
+        <div className='beers-image-container'>
+          <img className='beers-image' src={beers} alt='3 Beers' />
+        </div>
         <div className='content'>
           <div className='sub-content'>
             Have you ever wanted to search through Brewdog's expansive back

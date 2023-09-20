@@ -103,6 +103,7 @@ export default function Beers() {
 
   const onPageChange = (newPage: number) => {
     setLocalPage(newPage)
+    window.scrollTo(0, 0)
   }
 
   return (
