@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 import { getBeersByName } from '../../api/Beers'
 import { constants } from '../../utils/constants'
-import SearchInput from '../searchBar/SearchBar'
+import SearchBar from '../searchBar/SearchBar'
 import './NavBar.css'
 import {
   setBeers,
@@ -59,7 +59,7 @@ const { loadingShort } = constants
       </div>
 
       <div className='pages-container'>
-        <SearchInput onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} />
       </div>
     </div>
   )

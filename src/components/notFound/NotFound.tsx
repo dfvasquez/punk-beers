@@ -29,8 +29,10 @@ const NotFound: React.FC<INotFoundProps> = ({ title, description, action }) => {
           />
         </div>
       )}
-      <img className='align-left' src={beers} alt='3 Beers' />
-      <img className='flipped align-right' src={beers} alt='3 Beers' />
+      <div className='beers-footer'>
+        <img className='align-left' src={beers} alt='3 Beers' />
+        <img className='flipped align-right' src={beers} alt='3 Beers' />
+      </div>
     </div>
   )
 }

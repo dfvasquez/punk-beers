@@ -33,3 +33,7 @@
     border: 0.01rem var(--orange) solid;
     border-radius: 2rem;
 }
+
+.action-button.disabled {
+    background-color: var(--glass);
+}

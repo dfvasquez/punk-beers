@@ -8,7 +8,7 @@ export interface ISearchBarProps {
   onSearch: (query: string) => void
 }
 
-const SearchInput: React.FC<ISearchBarProps> = ({ onSearch }) => {
+const SearchBar: React.FC<ISearchBarProps> = ({ onSearch }) => {
   const location = useLocation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -37,9 +37,16 @@ const SearchInput: React.FC<ISearchBarProps> = ({ onSearch }) => {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
-      <ActionButton text='Search' type='primary' onClick={handleSearch} />
+      <div className='buttons-container'>
+        <div className='button-container'>
+          <ActionButton text='Search' type='primary' onClick={handleSearch} />
+        </div>
+        <div className='button-container'>
+          <ActionButton text='Clean Search' type='inactive' onClick={handleSearch} disabled={!query} />
+        </div>
+      </div>
     </div>
   )
 }
 
-export default SearchInput
+export default SearchBar

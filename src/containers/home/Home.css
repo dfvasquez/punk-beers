@@ -70,13 +70,21 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 900px) {
 
     .home-sub-container {
         padding: 0 1rem;
         align-items: center;
         justify-content: center;
-        margin-top: 20vh;
+        margin-top: 30vh;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .home-sub-container {
+        margin-top: 40vh;
+        width: 100%;
     }
 
     .home-sub-container h1 {

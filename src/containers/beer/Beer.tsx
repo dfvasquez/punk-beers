@@ -44,18 +44,20 @@ const Beer = () => {
       {foundBeer ? (
         <BeerDetails foundBeer={foundBeer} />
       ) : (
-        <NotFound
-          title='BEER NOT FOUND'
-          description={`OOPS! Seems the beer you're trying to find doesn't exist (yet).`}
-          action={{
-            text: 'Check out our amazing beers',
-            buttonProps: {
-              text: 'here',
-              onClick: handleButton,
-              type: 'primary'
-            }
-          }}
-        />
+        <div className='empty-beer-container'>
+          <NotFound
+            title='BEER NOT FOUND'
+            description={`OOPS! Seems the beer you're trying to find doesn't exist (yet).`}
+            action={{
+              text: 'Check out our amazing beers',
+              buttonProps: {
+                text: 'here',
+                onClick: handleButton,
+                type: 'primary'
+              }
+            }}
+          />
+        </div>
       )}
     </div>
   )
