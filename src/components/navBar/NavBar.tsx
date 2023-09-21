@@ -1,25 +1,25 @@
 import { useEffect, useState } from 'react'
-//import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
-//import { getBeersByName } from '../../api/Beers'
-//import { constants } from '../../utils/constants'
-//import SearchInput from '../searchBar/SearchBar'
+import { getBeersByName } from '../../api/Beers'
+import { constants } from '../../utils/constants'
+import SearchInput from '../searchBar/SearchBar'
 import './NavBar.css'
-/* import {
+import {
   setBeers,
   setLoading,
   setPage,
   setTotalPages
-} from '../../store/beersSlice' */
+} from '../../store/beersSlice'
 
 export default function NavBar() {
-  // const dispatch = useDispatch()
-  //const { loadingShort } = constants
+   const dispatch = useDispatch()
+const { loadingShort } = constants
   const [isScrolling, setIsScrolling] = useState(false)
   const [scrollTop, setScrollTop] = useState(0)
 
-  /*  const handleSearch = (query: string) => {
+   const handleSearch = (query: string) => {
     dispatch(setLoading(true))
     dispatch(setPage(1))
     getBeersByName(query, 1)
@@ -30,7 +30,7 @@ export default function NavBar() {
       .finally(() => {
         setTimeout(() => dispatch(setLoading(false)), loadingShort)
       })
-  } */
+  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -58,9 +58,9 @@ export default function NavBar() {
         </Link>
       </div>
 
-     {/*  <div className='pages-container'>
+      <div className='pages-container'>
         <SearchInput onSearch={handleSearch} />
-      </div> */}
+      </div>
     </div>
   )
 }

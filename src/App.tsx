@@ -6,7 +6,7 @@ import {
   useNavigate
 } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setBeers, setLoading, setTotalPages } from './store/beersSlice'
+import { setBeers, setLoading, setPage, setTotalPages } from './store/beersSlice'
 import { getAllBeers } from './api/Beers'
 import { constants } from './utils/constants'
 import Nav from './components/navBar/NavBar'
@@ -25,6 +25,7 @@ const RoutesComponent = () => {
     dispatch(setLoading(true))
     getAllBeers(1)
       .then((data) => {
+        dispatch(setPage(1))
         dispatch(setBeers(data))
         dispatch(setTotalPages(data))
       })

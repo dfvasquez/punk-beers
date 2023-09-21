@@ -2,12 +2,15 @@ import React, { ChangeEvent, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import ActionButton from '../buttons/actionButton/ActionButton'
 import './SearchBar.css'
+import { useDispatch } from 'react-redux'
+import { setBeersSearch } from '../../store/beersSlice'
 export interface ISearchBarProps {
   onSearch: (query: string) => void
 }
 
 const SearchInput: React.FC<ISearchBarProps> = ({ onSearch }) => {
   const location = useLocation()
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
 
@@ -17,7 +20,7 @@ const SearchInput: React.FC<ISearchBarProps> = ({ onSearch }) => {
 
   const handleSearch = async () => {
     await onSearch(query)
-    setQuery('')
+    dispatch(setBeersSearch(query))
     if (location.pathname !== '/beers') navigate('/beers')
   }
 
