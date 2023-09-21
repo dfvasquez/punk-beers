@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
-import { getBeersByName } from '../../api/Beers'
+import { getAllBeers, getBeersByName } from '../../api/Beers'
 import { constants } from '../../utils/constants'
 import SearchBar from '../searchBar/SearchBar'
 import './NavBar.css'
@@ -14,16 +14,29 @@ import {
 } from '../../store/beersSlice'
 
 export default function NavBar() {
-   const dispatch = useDispatch()
-const { loadingShort } = constants
+  const dispatch = useDispatch()
+  const { loadingShort } = constants
   const [isScrolling, setIsScrolling] = useState(false)
   const [scrollTop, setScrollTop] = useState(0)
 
-   const handleSearch = (query: string) => {
+  const handleSearch = (query: string) => {
     dispatch(setLoading(true))
     dispatch(setPage(1))
     getBeersByName(query, 1)
       .then((data) => {
+        dispatch(setBeers(data))
+        dispatch(setTotalPages(data))
+      })
+      .finally(() => {
+        setTimeout(() => dispatch(setLoading(false)), loadingShort)
+      })
+  }
+
+  const handleClean = () => {
+    dispatch(setLoading(true))
+    getAllBeers(1)
+      .then((data) => {
+        dispatch(setPage(1))
         dispatch(setBeers(data))
         dispatch(setTotalPages(data))
       })
@@ -59,7 +72,7 @@ const { loadingShort } = constants
       </div>
 
       <div className='pages-container'>
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} onClean={handleClean} />
       </div>
     </div>
   )

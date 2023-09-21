@@ -8,7 +8,8 @@ import {
   setMoreBeers,
   setSorted,
   setLoading,
-  setTotalPages
+  setTotalPages,
+  setBeersSearch
 } from '../../store/beersSlice'
 import { getAllBeers, getBeersByName } from '../../api/Beers'
 import { IApi } from '../../interfaces/Beer'

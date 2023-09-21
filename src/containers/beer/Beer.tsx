@@ -39,6 +39,10 @@ const Beer = () => {
     }
   }, [beer, dispatch, loadingShort, beerId])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className='beer-container'>
       {foundBeer ? (

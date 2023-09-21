@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 
-.action-button:hover:active {
+.action-button.primary:hover:active {
     background-color: var(--orange);
     color: var(--primary-dark);
 }
@@ -36,4 +36,6 @@
 
 .action-button.disabled {
     background-color: var(--glass);
+    cursor: default;
+    transform: scale(1);
 }
