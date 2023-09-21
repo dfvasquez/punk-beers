@@ -5,39 +5,6 @@
     height: 10vh;
 }
 
-.loading-container {
-    display: flex;
-    justify-content: center;
-}
-
-.spinner {
-    margin-top: 30vh;
-    border: 0.5rem solid var(--primary-light);
-    border-top: 0.5rem solid var(--primary);
-    border-radius: 50%;
-    width: 10rem;
-    height: 10rem;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.loading-beer {
-    width: 10vw;
-    height: 10vh;
-    margin-top: 1.25rem;
-    margin-left: 0.8rem;
-    filter: grayscale();
-}
-
 .empty-container {
     justify-content: center;
 }

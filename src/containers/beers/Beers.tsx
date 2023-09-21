@@ -13,17 +13,13 @@ import {
 import { getAllBeers } from '../../api/Beers'
 import { IApi } from '../../interfaces/Beer'
 import { constants } from '../../utils/constants'
-import {
-  sortByName,
-  sortByAbv,
-  sortByIbu,
-  sortById
-} from '../../utils/beerDataHandler'
+import { sliceBeers, sortBeers } from '../../utils/beerDataHandler'
 import SortBy from '../../components/sortBy/SortBy'
 import NotFound from '../../components/notFound/NotFound'
-import defaultBeerImage from '../../assets/beers.svg'
-import './Beers.css'
+import Loading from '../../components/loading/Loading'
 import Pagination from '../../components/pagination/Pagination'
+import BeersList from './BeersList'
+import './Beers.css'
 
 export default function Beers() {
   const navigate = useNavigate()
@@ -40,16 +36,7 @@ export default function Beers() {
   }
 
   const handleSort = async (criteria: string) => {
-    let sorted = [...beers]
-    if (criteria === 'name') {
-      sorted = sortByName(sorted)
-    } else if (criteria === 'abv') {
-      sorted = sortByAbv(sorted)
-    } else if (criteria === 'ibu') {
-      sorted = sortByIbu(sorted)
-    } else {
-      sorted = sortById(sorted)
-    }
+    const sorted = sortBeers([...beers], criteria)
     await dispatch(setSorted(sorted))
     setLocalPage(1)
   }
@@ -82,12 +69,7 @@ export default function Beers() {
   }, [page])
 
   useEffect(() => {
-    setSortedBeers(
-      beers.slice(
-        (localPage - 1) * beersPerPage,
-        (localPage - 1) * beersPerPage + beersPerPage
-      )
-    )
+    setSortedBeers(sliceBeers(beers, localPage, beersPerPage))
   }, [beers, beersPerPage, localPage])
 
   useEffect(() => {
@@ -109,11 +91,7 @@ export default function Beers() {
   return (
     <div className='beers-container'>
       {loading ? (
-        <div className='loading-container'>
-          <div className='spinner'>
-            <img className='loading-beer' src={defaultBeerImage} alt='Beers' />
-          </div>
-        </div>
+        <Loading />
       ) : (
         <>
           {sortedBeers?.length ? (
@@ -126,44 +104,10 @@ export default function Beers() {
                 totalPages={totalPages}
                 onPageChange={onPageChange}
               />
-              <div className='grid-container'>
-                {sortedBeers &&
-                  sortedBeers.map((beer: IApi, index: number) => (
-                    <div
-                      key={beer.id}
-                      className='grid-item flex-col'
-                      onClick={() => handleOnClick(beer.id)}>
-                      <div className='beer-item-image-container'>
-                        <img
-                          className='beer-item-image'
-                          src={beer.image_url ?? defaultBeerImage}
-                          alt='Beer'
-                        />
-                      </div>
-                      <div className='beer-item-footer'>
-                        <h2 className='beer-item-title'>
-                          {beer.name} ({beer.volume.value} {beer.volume.unit} -{' '}
-                          {beer.abv} % - {beer.ibu} IBU)
-                        </h2>
-                        <p>{beer.tagline}</p>
-                        <p className='beer-item-description'>
-                          {beer.ingredients.yeast}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-              {loading && (
-                <div className='loading-container'>
-                  <div className='spinner'>
-                    <img
-                      className='loading-beer'
-                      src={defaultBeerImage}
-                      alt='Beers'
-                    />
-                  </div>
-                </div>
-              )}
+              <BeersList
+                sortedBeers={sortedBeers}
+                handleOnClick={handleOnClick}
+              />
               <Pagination
                 currentPage={localPage}
                 totalPages={totalPages}

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { IApi } from '../interfaces/Beer'
+import { constants } from '../utils/constants'
 
 export interface IBeerState {
   beers: IApi[]
@@ -12,7 +13,7 @@ export interface IBeerState {
 const initialState: IBeerState = {
   beers: [],
   page: 1,
-  beersPerPage: 9,
+  beersPerPage: constants.perPageApp,
   totalPages: 1,
   loading: false
 }

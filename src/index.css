@@ -62,4 +62,5 @@ p {
 .logo {
   color: var(--primary-light);
   font-family: 'New rocker', cursive;
+  font-size: 2.5rem;
 }

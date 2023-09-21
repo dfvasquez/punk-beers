@@ -1,5 +1,6 @@
 export const constants = {
-  perPage: 80,
+  perPageApi: 80,
+  perPageApp: 9,
   loadingLong: 2000,
   loadingShort: 500
 }

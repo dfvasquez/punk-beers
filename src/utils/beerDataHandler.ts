@@ -35,3 +35,28 @@ export const sortById = (beers: IApi[]) => {
   })
   return beers
 }
+
+export const sortBeers = (beers: IApi[], criteria: string) => {
+  let sorted = [...beers]
+  if (criteria === 'name') {
+    sorted = sortByName(sorted)
+  } else if (criteria === 'abv') {
+    sorted = sortByAbv(sorted)
+  } else if (criteria === 'ibu') {
+    sorted = sortByIbu(sorted)
+  } else {
+    sorted = sortById(sorted)
+  }
+  return sorted
+}
+
+export const sliceBeers = (
+  beers: IApi[],
+  currentPage: number,
+  beersPerPage: number
+) => {
+  return beers.slice(
+    (currentPage - 1) * beersPerPage,
+    (currentPage - 1) * beersPerPage + beersPerPage
+  )
+}
