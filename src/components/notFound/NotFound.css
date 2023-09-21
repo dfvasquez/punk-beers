@@ -32,3 +32,49 @@
 .not-found-beer-footer h2 {
     padding-right: 1vw;
 }
+
+
+@media (max-width: 1300px) {
+    .not-found-beer-container {
+        margin: 20vh 1vw;
+        text-align: center;
+    }
+
+    .not-found-beer-container img {
+        top: 50vh;
+    }
+}
+
+@media (max-width: 900px) {
+    .not-found-beer-container {
+        margin: 30vh 1vw;
+    }
+    .not-found-beer-container img {
+        top: 65vh;
+    }
+    .not-found-beer-footer {
+        padding: 0.5vh;
+        margin-top: -2vh;
+       
+    }
+}
+
+@media (max-width: 700px) {
+    .not-found-beer-container img {
+        top: 75vh;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .not-found-beer-container {
+        margin: 35vh 1vw;
+    }
+    .not-found-beer-container img {
+        top: 80vh;
+    }
+    .not-found-beer-footer {
+        flex-direction: column;
+    }
+
+}

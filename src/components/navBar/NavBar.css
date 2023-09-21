@@ -28,6 +28,23 @@
 .pages-container {
     display: flex;
     margin-right: 2rem;
-    width: 90vw;
-    justify-content: flex-end;
+}
+
+
+
+@media (max-width: 1300px) {
+    .navbar.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+    .pages-container {
+        display: flex;
+        margin-right: 2rem;
+    }
 }

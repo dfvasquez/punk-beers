@@ -36,22 +36,30 @@
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .sort-by-container {
         padding-left: 0;
+        padding-top: 8vh;
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     .sort-by-container {
         flex-direction: column;
-
+        padding-top: 3vh;
     }
 
     .sort-by-sub-container {
         margin-bottom: 1rem;
     }
 }
+
+@media (max-width: 900px) {
+    .sort-by-container {
+        padding-top: 13vh;
+    }
+}
+
 
 @media (max-width: 700px) {
     .sort-by-sub-container {
@@ -62,7 +70,10 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
+    .sort-by-container {
+        padding-top: 25vh;
+    }
     #sort-select {
         font-size: 1.2rem;
     }

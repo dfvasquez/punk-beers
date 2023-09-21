@@ -8,9 +8,10 @@ import {
   setMoreBeers,
   setSorted,
   setLoading,
-  setTotalPages
+  setTotalPages,
+  setBeersSearch
 } from '../../store/beersSlice'
-import { getAllBeers } from '../../api/Beers'
+import { getAllBeers, getBeersByName } from '../../api/Beers'
 import { IApi } from '../../interfaces/Beer'
 import { constants } from '../../utils/constants'
 import { sliceBeers, sortBeers } from '../../utils/beerDataHandler'
@@ -25,9 +26,8 @@ export default function Beers() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { loadingShort } = constants
-  const { beers, page, beersPerPage, totalPages, loading } = useSelector(
-    (state: RootState) => state.beers
-  )
+  const { beers, beersSearch, page, beersPerPage, totalPages, loading } =
+    useSelector((state: RootState) => state.beers)
   const [sortedBeers, setSortedBeers] = useState<IApi[]>()
   const [localPage, setLocalPage] = useState<number>(1)
 
@@ -45,6 +45,7 @@ export default function Beers() {
     dispatch(setLoading(true))
     getAllBeers(1)
       .then((data) => {
+        dispatch(setPage(1))
         dispatch(setBeers(data))
         dispatch(setTotalPages(data))
       })
@@ -54,12 +55,21 @@ export default function Beers() {
   }
 
   const fetchMoreBeers = () => {
-    getAllBeers(page + 1).then((data) => {
-      if (data.length) {
-        dispatch(setPage(page + 1))
-        dispatch(setMoreBeers(data))
-      }
-    })
+    if (beersSearch) {
+      getBeersByName(beersSearch, page + 1).then((data) => {
+        if (data.length) {
+          dispatch(setPage(page + 1))
+          dispatch(setMoreBeers(data))
+        }
+      })
+    } else {
+      getAllBeers(page + 1).then((data) => {
+        if (data.length) {
+          dispatch(setPage(page + 1))
+          dispatch(setMoreBeers(data))
+        }
+      })
+    }
   }
 
   useEffect(() => {

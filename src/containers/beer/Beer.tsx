@@ -39,23 +39,29 @@ const Beer = () => {
     }
   }, [beer, dispatch, loadingShort, beerId])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className='beer-container'>
       {foundBeer ? (
         <BeerDetails foundBeer={foundBeer} />
       ) : (
-        <NotFound
-          title='BEER NOT FOUND'
-          description={`OOPS! Seems the beer you're trying to find doesn't exist (yet).`}
-          action={{
-            text: 'Check out our amazing beers',
-            buttonProps: {
-              text: 'here',
-              onClick: handleButton,
-              type: 'primary'
-            }
-          }}
-        />
+        <div className='empty-beer-container'>
+          <NotFound
+            title='BEER NOT FOUND'
+            description={`OOPS! Seems the beer you're trying to find doesn't exist (yet).`}
+            action={{
+              text: 'Check out our amazing beers',
+              buttonProps: {
+                text: 'here',
+                onClick: handleButton,
+                type: 'primary'
+              }
+            }}
+          />
+        </div>
       )}
     </div>
   )
