@@ -33,13 +33,14 @@
     color: transparent;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 2000px) {
 
     .home-sub-container {
         align-items: center;
         padding: 0 10rem;
         justify-content: center;
-        margin-top: 20vh;
+        padding-top: 10vh;
+        top: 0;
     }
 
     .home-content-container {

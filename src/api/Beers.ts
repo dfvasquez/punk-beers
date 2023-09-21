@@ -6,7 +6,7 @@ const BASE_URL = process.env.REACT_APP_API ?? ''
 
 export const getAllBeers = (
   page: number,
-  perPage: number = constants.perPage
+  perPage: number = constants.perPageApi
 ): Promise<[] | IApi[]> => {
   const url = `${BASE_URL}?page=${page}&per_page=${perPage}`
 
@@ -22,7 +22,7 @@ export const getAllBeers = (
 export const getBeersByName = (
   beerName: string,
   page: number,
-  perPage: number = constants.perPage
+  perPage: number = constants.perPageApi
 ): Promise<[] | IApi[]> => {
   const url = `${BASE_URL}?page=${page}&per_page=${perPage}&beer_name=${beerName}`
 
